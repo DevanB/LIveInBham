@@ -22,7 +22,7 @@
         <a href="#" data-reveal-id="role-options-<%= user.id %>" class="button tiny radius" type="button">Change role</a>
         <%= render user %>
       </td>
-      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button radius') unless user == current_user %></td>
+      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button tiny alert radius') unless user == current_user %></td>
     </tr>
   </tbody>
   <% end %>

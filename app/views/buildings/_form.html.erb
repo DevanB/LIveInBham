@@ -5,7 +5,7 @@
     <%= f.input :address %>
     <%= f.input :city %>
     <%= f.input :state %>
-    <%= f.input :zip_code_id, collection: ZipCode.all, label_method: :zip_code, value_method: :zip_code, label: "Zip Code:", include_blank: false %>
+    <%= f.association :zip_code, label_method: :zip_code %>
   </div>
 
   <div class="form-actions">

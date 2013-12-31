@@ -1,12 +1,11 @@
-<h1>Listing categories</h1>
+<h1>Categories</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Catbegin</th>
-      <th>Catend</th>
-      <th></th>
+      <th>Category Begin Number</th>
+      <th>Category End Number</th>
       <th></th>
       <th></th>
     </tr>
@@ -15,10 +14,9 @@
   <tbody>
     <% @categories.each do |category| %>
       <tr>
-        <td><%= category.name %></td>
+        <td><%= link_to category.name, category %></td>
         <td><%= category.catBegin %></td>
         <td><%= category.catEnd %></td>
-        <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

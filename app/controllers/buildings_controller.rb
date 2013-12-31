@@ -25,7 +25,7 @@ class BuildingsController < ApplicationController
 
     respond_to do |format|
       if @building.save
-        format.html { redirect_to @building, notice: 'Building was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Building was successfully created.' }
         format.json { render action: 'show', status: :created, location: @building }
       else
         format.html { render action: 'new' }
@@ -51,7 +51,7 @@ class BuildingsController < ApplicationController
     authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
     @building.destroy
     respond_to do |format|
-      format.html { redirect_to buildings_url }
+      format.html { redirect_to admin_path, notice: 'Building was successfully deleted.' }
       format.json { head :no_content }
     end
   end

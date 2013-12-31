@@ -1,0 +1,89 @@
+<h3>Administration Portal</h1>
+
+<dl class="tabs" data-tab>
+  <dd class="active"><a href="#buildingsPanel">Buildings</a></dd>
+  <dd><a href="#zipsPanel">Zip Codes</a></dd>
+  <dd><a href="#usersPanel">Users</a></dd>
+</dl>
+
+<div class="tabs-content">
+  <div class="content active" id="buildingsPanel">
+    <%= link_to 'New Building', new_building_path %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip code</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @buildings.each do |building| %>
+          <tr>
+            <td><%= link_to building.name, building %></td>
+            <td><%= building.address %></td>
+            <td><%= building.city %></td>
+            <td><%= building.state %></td>
+            <td><%= building.zip_code_id %></td>
+            <td><%= link_to 'Edit', edit_building_path(building) %></td>
+            <td><%= link_to 'Delete', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="content" id="zipsPanel">
+    <%= link_to 'New Zip code', new_zip_code_path %>
+    <table>
+      <thead>
+        <tr>
+          <th>Zip Code</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @zip_codes.each do |zip_code| %>
+          <tr>
+            <td><%= link_to zip_code.zip_code, zip_code %></td>
+            <td><%= link_to 'Edit', edit_zip_code_path(zip_code) %></td>
+            <td><%= link_to 'Delete', zip_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="content" id="usersPanel">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Registered</th>
+          <th>Role</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at.to_date %></td>
+          <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
+          <td>
+            <a href="#" data-reveal-id="role-options-<%= user.id %>" class="button tiny radius" type="button">Change role</a>
+            <%= render "users/user", :user => user %>
+          </td>
+          <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button tiny alert radius') unless user == current_user %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

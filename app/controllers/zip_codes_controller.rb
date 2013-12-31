@@ -1,28 +1,26 @@
 class ZipCodesController < ApplicationController
   before_action :set_zip_code, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
 
   def index
-    authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @zip_codes = ZipCode.all
   end
 
+  def show
+  end
+
   def new
-    authorize! :new, @user, :message => 'Not authorized as an administrator.'
     @zip_code = ZipCode.new
   end
 
   def edit
-    authorize! :edit, @user, :message => 'Not authorized as an administrator.'
   end
 
   def create
-    authorize! :create, @user, :message => 'Not authorized as an administrator.'
     @zip_code = ZipCode.new(zip_code_params)
 
     respond_to do |format|
       if @zip_code.save
-        format.html { redirect_to @zip_code, notice: 'Zip code was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Zip code was successfully created.' }
         format.json { render action: 'show', status: :created, location: @zip_code }
       else
         format.html { render action: 'new' }
@@ -32,7 +30,6 @@ class ZipCodesController < ApplicationController
   end
 
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
     respond_to do |format|
       if @zip_code.update(zip_code_params)
         format.html { redirect_to @zip_code, notice: 'Zip code was successfully updated.' }
@@ -45,7 +42,6 @@ class ZipCodesController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
     @zip_code.destroy
     respond_to do |format|
       format.html { redirect_to zip_codes_url }

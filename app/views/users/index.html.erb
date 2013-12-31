@@ -1,30 +1,30 @@
 <h3>Users</h3>
 <div class="span8">
-<table class="table table-condensed">
-  <% @users.each do |user| %>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Registered</th>
-      <th>Role</th>
-      <th></th>
-      <% unless user == current_user %><th></th><% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= link_to user.name, user %></td>
-      <td><%= user.email %></td>
-      <td><%= user.created_at.to_date %></td>
-      <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
-      <td>
-        <a href="#" data-reveal-id="role-options-<%= user.id %>" class="button tiny radius" type="button">Change role</a>
-        <%= render user %>
-      </td>
-      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button tiny alert radius') unless user == current_user %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+  <table class="table table-condensed">
+    <% @users.each do |user| %>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Registered</th>
+        <th>Role</th>
+        <th></th>
+        <% unless user == current_user %><th></th><% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at.to_date %></td>
+        <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
+        <td>
+          <a href="#" data-reveal-id="role-options-<%= user.id %>" class="button tiny radius" type="button">Change role</a>
+          <%= render user %>
+        </td>
+        <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button tiny alert radius') unless user == current_user %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>

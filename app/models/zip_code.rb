@@ -1,3 +1,3 @@
 class ZipCode < ActiveRecord::Base
-	belongs_to :buildings
+	belongs_to :building
 end

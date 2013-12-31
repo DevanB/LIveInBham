@@ -1,3 +1,5 @@
 class ZipCode < ActiveRecord::Base
-	belongs_to :building
+	has_many :buildings
+
+	validates_presence_of :zip_code
 end

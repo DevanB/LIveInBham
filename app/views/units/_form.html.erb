@@ -1,0 +1,17 @@
+<%= simple_form_for(@unit) do |f| %>
+  <%= f.error_notification %>
+  
+  <%= f.input :number, label: "Unit Number" %>
+  <%= f.input :avail_date, label: "Availability Date", input_html: { id: "availDate" }, as: :string %>
+  <%= f.association :category %>
+  <%= f.association :building %>
+  <%= f.input :title, label: "Listing Title" %>
+  <%= f.input :description %>
+  <%= f.input :bedrooms, label: "Number of Bedrooms", as: :string %>
+  <%= f.input :bathrooms, label: "Number of Bathrooms", as: :string %>
+  <%= f.input :price, label:"Price Per Month", as: :string %>
+  <%= f.input :link %>
+  <%# <%= f.input :image %>
+    
+  <%= f.button :submit, class: "button small radius" %>
+<% end %>

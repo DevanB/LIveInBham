@@ -1,0 +1,52 @@
+<h3>All Units</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Unit Number</th>
+      <th>Availability Date</th>
+      <th>Category</th>
+      <th>Building</th>
+      <th>Title</th>
+      <th>Bedrooms</th>
+      <th>Bathrooms</th>
+      <th>Price Per Month</th>
+      <%#<th>Image</th>%>
+      <% unless @units.length == 0 %><th></th><% end %>
+      <% if user_signed_in? %>
+        <% if current_user.has_role? :admin && @units.length == 0 %>
+          <th></th>
+          <th></th>
+        <% end %>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= unit.number %></td>
+        <td><%= unit.avail_date %></td>
+        <td><%= unit.category.name %></td>
+        <td><%= unit.building.name %></td>
+        <td><%= unit.title %></td>
+        <td><%= unit.bedrooms %></td>
+        <td><%= unit.bathrooms %></td>
+        <td><%= number_to_currency(unit.price) %></td>
+        <%# <td><%= unit.image ></td> %>
+        <td><%= link_to 'Show', unit %></td>
+        <% if user_signed_in? %>
+          <% if current_user.has_role? :admin %>
+            <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+            <td><%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.has_role? :admin %>
+    <%= link_to 'New Unit', new_unit_path %>
+  <% end %>
+<% end %>

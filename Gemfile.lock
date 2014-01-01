@@ -76,6 +76,7 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.4)
+    foundation-datetimepicker-rails (0.1.2)
     foundation-rails (5.0.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   figaro
+  foundation-datetimepicker-rails
   foundation-rails
   geocoder
   guard-bundler

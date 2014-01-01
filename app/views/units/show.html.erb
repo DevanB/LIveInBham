@@ -1,0 +1,65 @@
+<p>
+  <strong>Unit Number:</strong>
+  <%= @unit.number %>
+</p>
+
+<p>
+  <strong>Availability Date:</strong>
+  <%= @unit.avail_date %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @unit.category.name %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @unit.building.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @unit.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @unit.description %>
+</p>
+
+<p>
+  <strong>Number of Bedrooms:</strong>
+  <%= @unit.bedrooms %>
+</p>
+
+<p>
+  <strong>Number ofBathrooms:</strong>
+  <%= @unit.bathrooms %>
+</p>
+
+<p>
+  <strong>Price Per Month:</strong>
+  <%= number_to_currency(@unit.price) %>
+</p>
+
+<% unless @unit.link %>
+<p>
+  <strong>Link:</strong>
+  <%= @unit.link %>
+</p>
+<% end %>
+
+<%
+=begin 
+%>
+<p>
+  <strong>Image:</strong>
+  <%= @unit.image %>
+</p>
+<%
+=end 
+%>
+
+<%= link_to 'Edit', edit_unit_path(@unit) %> |
+<%= link_to 'Back', units_path %>

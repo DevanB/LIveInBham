@@ -1,11 +1,11 @@
 Liveinbham::Application.routes.draw do
-  resources :zip_codes
-
-	root :to => "home#index"
+	root :to => "units#index"
 	get "administrator/index", :as => "admin"
 	devise_for :users, :controllers => {:registrations => "registrations"}
-  
+
 	resources :users
 	resources :buildings
 	resources :categories
+	resources :zip_codes
+	resources :units
 end

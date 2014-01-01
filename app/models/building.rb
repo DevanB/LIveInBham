@@ -1,5 +1,6 @@
 class Building < ActiveRecord::Base
 	belongs_to :zip_code
+	has_many :units
 
 	validates_presence_of :name, :address, :city, :state, :zip_code
 

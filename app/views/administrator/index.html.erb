@@ -28,7 +28,7 @@
             <td><%= building.address %></td>
             <td><%= building.city %></td>
             <td><%= building.state %></td>
-            <td><%= building.zip_code.zip_code %></td>
+            <td><%= building.zip_code[:zip_code] %></td>
             <td><%= link_to 'Edit', edit_building_path(building) %></td>
             <td><%= link_to 'Delete', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

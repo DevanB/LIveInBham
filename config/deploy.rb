@@ -11,7 +11,7 @@ set :use_sudo, false
 set :rails_env, "production"
 
 set :scm, "git"
-set :repository,  "git@github.com:DevanB/LIveInBham.git" #GitHub clone URL
+set :repo_url, 'git@github.com:DevanB/LIveInBham.git'
 set :branch, "master"
 set :scm_verbose, true
 set :git_shallow_clone, 1

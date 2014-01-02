@@ -24,6 +24,7 @@ gem 'mini_magick'
 gem 'rabl'
 gem 'font-awesome-rails'
 gem 'capistrano', '~> 3.0.1'
+gem 'capistrano-bundler'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

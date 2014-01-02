@@ -40,6 +40,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 0.0.23)
+    capistrano-bundler (1.1.1)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2.0)
     capybara (2.2.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -263,6 +266,7 @@ DEPENDENCIES
   binding_of_caller
   cancan
   capistrano (~> 3.0.1)
+  capistrano-bundler
   capybara
   carrierwave
   carrierwave_backgrounder

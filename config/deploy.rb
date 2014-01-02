@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 require 'sidekiq/capistrano'
 
-server "192.241.170.82", :web, :app, :db, primary: true
+server "192.241.246.120", :web, :app, :db, primary: true
 
 set :application, 'liveinbham'
 set :user, 'deployer'

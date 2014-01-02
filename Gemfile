@@ -17,8 +17,12 @@ gem 'simple_form'
 gem 'geocoder'
 gem 'foundation-datetimepicker-rails'
 gem 'carrierwave'
+gem 'carrierwave_backgrounder'
+gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'mini_magick'
 gem 'rabl'
+gem 'font-awesome-rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

@@ -3,7 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>Unit Number</th>
+      <% if user_signed_in? %>
+        <% if current_user.has_role? :admin && @units.length == 0 %>
+          <th></th>
+        <% end %>
+      <% end %>
+      <th>Number</th>
       <th>Availability Date</th>
       <th>Category</th>
       <th>Building</th>
@@ -24,6 +29,17 @@
   <tbody>
     <% @units.each do |unit| %>
       <tr>
+        <% if user_signed_in? %>
+          <% if current_user.has_role? :admin && @units.length == 0 %>
+            <td>
+              <% if unit.featured? %>
+                <%= link_to fa_icon("star lg"), "#", id: unit.id, class: "featured_on", remote: true %>
+              <% else %>
+                <%= link_to fa_icon("star-o lg"), "#", id: unit.id, class: "featured_off", remote: true %>
+              <% end %>
+            </td>
+          <% end %>
+        <% end %>
         <td><%= unit.number %></td>
         <td><%= unit.avail_date.strftime("%a, %b %e") %></td>
         <td><%= unit.category.name %></td>
@@ -33,11 +49,11 @@
         <td><%= unit.bathrooms %></td>
         <td><%= number_to_currency(unit.price) %></td>
         <%# <td><%= unit.image ></td> %>
-        <td><%= link_to 'Show', unit %></td>
+        <td><%= link_to 'More Information', unit %></td>
         <% if user_signed_in? %>
           <% if current_user.has_role? :admin %>
             <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-            <td><%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete', unit, method: "delete", confirm: 'Are you sure?', remote: true, class: "delete_unit" %></td>
           <% end %>
         <% end %>
       </tr>

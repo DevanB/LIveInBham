@@ -1,3 +1,13 @@
 // Place all the styles related to the units controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.featured_off, .featured_on {
+	&:hover {
+		background: none;
+	}
+	&:visited {
+		color:#ffd700;
+	}
+	color:#ffd700;
+}

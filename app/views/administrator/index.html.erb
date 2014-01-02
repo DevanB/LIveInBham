@@ -1,14 +1,80 @@
 <h3>Administration Portal</h1>
 
 <dl class="tabs" data-tab>
-  <dd class="active"><a href="#buildingsPanel">Buildings</a></dd>
+  <dd class="active"><a href="#unitsPanel">Units</a></dd>
+  <dd><a href="#buildingsPanel">Buildings</a></dd>
   <dd><a href="#zipsPanel">Zip Codes</a></dd>
   <dd><a href="#usersPanel">Users</a></dd>
 </dl>
 
 <div class="tabs-content">
-  <div class="content active" id="buildingsPanel">
-    <%= link_to 'New Building', new_building_path %>
+  <div class="content active" id="unitsPanel">
+    <table>
+      <thead>
+        <tr>
+          <% if user_signed_in? %>
+            <% if current_user.has_role? :admin && @units.length == 0 %>
+              <th></th>
+            <% end %>
+          <% end %>
+          <th>Number</th>
+          <th>Availability Date</th>
+          <th>Category</th>
+          <th>Building</th>
+          <th>Title</th>
+          <th>Bedrooms</th>
+          <th>Bathrooms</th>
+          <th>Price Per Month</th>
+          <% unless @units.length == 0 %><th></th><% end %>
+          <% if user_signed_in? %>
+            <% if current_user.has_role? :admin && @units.length == 0 %>
+              <th></th>
+              <th></th>
+            <% end %>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @units.each do |unit| %>
+          <tr>
+            <% if user_signed_in? %>
+              <% if current_user.has_role? :admin && @units.length == 0 %>
+                <td>
+                  <% if unit.featured? %>
+                    <%= link_to fa_icon("star lg"), "#", id: unit.id, class: "featured_on", remote: true %>
+                  <% else %>
+                    <%= link_to fa_icon("star-o lg"), "#", id: unit.id, class: "featured_off", remote: true %>
+                  <% end %>
+                </td>
+              <% end %>
+            <% end %>
+            <td><%= unit.number %></td>
+            <td><%= unit.avail_date.strftime("%a, %b %e") %></td>
+            <td><%= unit.category.name %></td>
+            <td><%= unit.building.name %></td>
+            <td><%= unit.title %></td>
+            <td><%= unit.bedrooms %></td>
+            <td><%= unit.bathrooms %></td>
+            <td><%= number_to_currency(unit.price) %></td>
+            <td><%= link_to 'More Information', unit %></td>
+            <% if user_signed_in? %>
+              <% if current_user.has_role? :admin %>
+                <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+                <td><%= link_to 'Delete', unit, method: "delete", confirm: 'Are you sure?', remote: true, class: "delete_unit" %></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
+        <%= link_to 'New Unit', new_unit_path, class: "button small success radius" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="content" id="buildingsPanel">
     <table>
       <thead>
         <tr>
@@ -35,9 +101,9 @@
         <% end %>
       </tbody>
     </table>
+    <%= link_to 'New Building', new_building_path, class: "button small success radius" %>
   </div>
   <div class="content" id="zipsPanel">
-    <%= link_to 'New Zip Code', new_zip_code_path %>
     <table>
       <thead>
         <tr>
@@ -56,6 +122,7 @@
         <% end %>
       </tbody>
     </table>
+    <%= link_to 'New Zip Code', new_zip_code_path, class: "button small success radius" %>
   </div>
   <div class="content" id="usersPanel">
     <table class="table table-condensed">

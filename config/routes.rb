@@ -8,4 +8,12 @@ Liveinbham::Application.routes.draw do
 	resources :categories
 	resources :zip_codes
 	resources :units
+
+	namespace :api, defaults: {format: 'json'} do
+	    namespace :v1 do
+	    	resources :units
+	    	resources :categories
+	    	get "featured", to: 'units#featured'
+	    end
+	end
 end

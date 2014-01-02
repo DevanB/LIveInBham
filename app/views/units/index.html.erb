@@ -25,7 +25,7 @@
     <% @units.each do |unit| %>
       <tr>
         <td><%= unit.number %></td>
-        <td><%= unit.avail_date %></td>
+        <td><%= unit.avail_date.strftime("%a, %b %e") %></td>
         <td><%= unit.category.name %></td>
         <td><%= unit.building.name %></td>
         <td><%= unit.title %></td>

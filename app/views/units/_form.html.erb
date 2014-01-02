@@ -11,7 +11,7 @@
   <%= f.input :bathrooms, label: "Number of Bathrooms", as: :string %>
   <%= f.input :price, label:"Price Per Month", as: :string %>
   <%= f.input :link %>
-  <%# <%= f.input :image %>
+  <%= f.input :image, :hint => "Optimal size is 640x380px" %>
     
   <%= f.button :submit, class: "button small radius" %>
 <% end %>

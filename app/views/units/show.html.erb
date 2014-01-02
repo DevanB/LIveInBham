@@ -5,7 +5,7 @@
 
 <p>
   <strong>Availability Date:</strong>
-  <%= @unit.avail_date %>
+  <%= @unit.avail_date.strftime("%A, %B %e %Y") %>
 </p>
 
 <p>
@@ -34,7 +34,7 @@
 </p>
 
 <p>
-  <strong>Number ofBathrooms:</strong>
+  <strong>Number of Bathrooms:</strong>
   <%= @unit.bathrooms %>
 </p>
 
@@ -43,23 +43,19 @@
   <%= number_to_currency(@unit.price) %>
 </p>
 
-<% unless @unit.link %>
+<% if @unit.link? %>
 <p>
   <strong>Link:</strong>
   <%= @unit.link %>
 </p>
 <% end %>
 
-<%
-=begin 
-%>
+<% if @unit.image? %>
 <p>
-  <strong>Image:</strong>
-  <%= @unit.image %>
+  <strong>Image:</strong><br/>
+  <%= image_tag @unit.image_url(:main) if @unit.image? %>
 </p>
-<%
-=end 
-%>
+<% end %>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>

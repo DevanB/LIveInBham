@@ -35,8 +35,9 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'capistrano', '~>3.0', require: false
-  gem 'capistrano-rails',
+  gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'capistrano-rbenv', github: "capistrano/rbenv"
 end
 group :development, :test do
   gem 'factory_girl_rails'

@@ -23,7 +23,6 @@ gem 'sinatra', require: false
 gem 'mini_magick'
 gem 'rabl'
 gem 'font-awesome-rails'
-gem 'capistrano', '2.15.5'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -35,6 +34,9 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'capistrano', '~>3.0', require: false
+  gem 'capistrano-rails',
+  gem 'capistrano-bundler'
 end
 group :development, :test do
   gem 'factory_girl_rails'

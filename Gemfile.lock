@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/capistrano/rbenv.git
-  revision: 67222bbce120323e422b051dcd167d8e2d3adbf0
-  specs:
-    capistrano-rbenv (2.0.0)
-      capistrano (~> 3.0)
-      sshkit (~> 1.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -54,6 +46,9 @@ GEM
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
       capistrano-bundler (>= 1.0.0)
+    capistrano-rbenv (2.0.0)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2.0)
     capybara (2.2.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -238,7 +233,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sshkit (1.3.0)
+    sshkit (1.2.0)
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
@@ -276,10 +271,10 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   cancan
-  capistrano (~> 3.0)
+  capistrano (~> 3.0.1)
   capistrano-bundler
-  capistrano-rails
-  capistrano-rbenv!
+  capistrano-rails (~> 1.1.0)
+  capistrano-rbenv (~> 2.0)
   capybara
   carrierwave
   carrierwave_backgrounder

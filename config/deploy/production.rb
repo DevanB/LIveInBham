@@ -1,16 +1,11 @@
 set :stage, :production
 set :branch, "master"
 
-set :pty, true
 
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
-set :full_app_name, "#{fetch(:application)}"
-
-server '192.241.246.120', user: 'deployer', roles: %w{web app db}, primary: true
-
-set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+server '127.0.0.1:2222', user: 'deploy', roles: %w{web app db}, primary: true
 
 # dont try and infer something as important as environment from
 # stage name.
@@ -30,9 +25,9 @@ set :enable_ssl, false
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-# role :app, %w{deploy@example.com}
-# role :web, %w{deploy@example.com}
-# role :db,  %w{deploy@example.com}
+# role :app, %w{deploy@127.0.0.1}
+# role :web, %w{deploy@127.0.0.1}
+# role :db,  %w{deploy@127.0.0.1}
 
 # Extended Server Syntax
 # ======================

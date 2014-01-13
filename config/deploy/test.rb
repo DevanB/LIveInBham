@@ -5,7 +5,7 @@ set :branch, "master"
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
-server '192.241.246.120', user: 'deploy', roles: %w{web app db}, primary: true
+server '127.0.0.1:2222', user: 'deploy', roles: %w{web app db}, primary: true
 
 # dont try and infer something as important as environment from
 # stage name.

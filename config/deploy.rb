@@ -1,4 +1,4 @@
-set :application, 'liveinbham'
+set :application, 'liveinbirmingham'
 set :deploy_user, 'deploy'
 
 #set repo details
@@ -77,5 +77,5 @@ end
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 # set :format, :pretty
-# set :log_level, :debug
+set :log_level, :debug
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

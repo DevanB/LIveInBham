@@ -10,7 +10,7 @@ module Api
 			end
 
 			def featured
-				@units = Event.featured.all
+				@units = Unit.featured.all
 				respond_with { @units }
 			end
 

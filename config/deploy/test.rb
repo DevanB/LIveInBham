@@ -1,11 +1,17 @@
 set :stage, :production
 set :branch, "master"
+set :use_sudo, false
+set :ssh_options, {
+	port: 2222,
+	keys: %w('~/.vagrant.d/insecure_private_key'),
+	forward_agent: true
+}
 
 
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
-server '127.0.0.1:2222', user: 'deploy', roles: %w{web app db}, primary: true
+server 'deploy@127.0.0.1:2222', roles: %w{web app db}, primary: true
 
 # dont try and infer something as important as environment from
 # stage name.

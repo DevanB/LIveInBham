@@ -19,7 +19,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :keep_releases, 5
 
 # files we want symlinking to specific entires in shared.
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml config/application.yml config/unicorn.rb}
 
 # dirs we want symlinking to shared
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
@@ -47,16 +47,20 @@ set(:executable_config_files, %w(
 # nginx virtualhosts, log rotation, inits scripts, etc.
 set(:symlinks, [
   {
-    source: "/deploy/shared/nginx.conf",
+    source: "nginx.conf",
     link: "/etc/nginx/sites-enabled/#{fetch(:full_app_name)}"
   },
   {
-    source: "/deploy/shared/unicorn_init.sh",
+    source: "unicorn_init.sh",
     link: "/etc/init.d/unicorn_#{fetch(:full_app_name)}"
   },
   {
-    source: "/deploy/shared/log_rotation",
+    source: "log_rotation",
     link: "/etc/logrotate.d/#{fetch(:full_app_name)}"
+  },
+  {
+    source: "unicorn.rb",
+    link: "#{shared_path}/config/unicorn.rb"
   }
 ])
 

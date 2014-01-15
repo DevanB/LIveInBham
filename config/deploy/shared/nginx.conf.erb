@@ -1,11 +1,11 @@
 upstream unicorn {
-  server unix:/tmp/unicorn.liveinbham.sock fail_timeout=0;
+  server unix:/tmp/unicorn.liveinbirmingham.sock fail_timeout=0;
 }
 
 server {
   listen 80 default deferred;
   # server_name example.com;
-  root /home/deployer/apps/liveinbham/current/public;
+  root /home/deployer/apps/liveinbirmingham/current/public;
 
   location ^~ /assets/ {
     gzip_static on;

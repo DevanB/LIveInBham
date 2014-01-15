@@ -94,7 +94,7 @@
             <td><%= building.address %></td>
             <td><%= building.city %></td>
             <td><%= building.state %></td>
-            <td><%= building.zip_code[:zip_code] %></td>
+            <td><%= building.zip_code %></td>
             <td><%= link_to 'Edit', edit_building_path(building) %></td>
             <td><%= link_to 'Delete', building, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
@@ -152,5 +152,23 @@
         <% end %>
       </tbody>
     </table>
+    <% if user_signed_in? %>
+      <% if current_user.has_role? :super %>
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Access Token</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @keys.each do |key| %>
+            <tr>
+              <td><%= key.access_token %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    <% end %>
   </div>
 </div>

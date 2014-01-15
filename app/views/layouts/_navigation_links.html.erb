@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <ul class="right">
 	<% if user_signed_in? %>
-		<% if current_user.has_role? :admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
+		<% if current_user.has_any_role? :super, :admin %><li><%= link_to 'Admin', admin_path %></li><% end %>
 		<li class="has-dropdown">
 			<a href="#">Account</a>
 			<ul class="dropdown">

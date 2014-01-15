@@ -7,5 +7,6 @@ class AdministratorController < ApplicationController
     @zip_codes = ZipCode.all
     @users = User.all
     @units = Unit.all
+    @keys = ApiKey.all
   end
 end

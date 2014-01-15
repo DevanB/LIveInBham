@@ -60,7 +60,7 @@ set(:symlinks, [
   },
   {
     source: "unicorn.rb",
-    link: "#{shared_path}/config/unicorn.rb"
+    link: "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}/current/config/unicorn.rb"
   }
 ])
 
@@ -81,5 +81,5 @@ end
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 # set :format, :pretty
-set :log_level, :debug
+# set :log_level, :debug
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

@@ -2,6 +2,7 @@ class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @units = Unit.all
   end
 

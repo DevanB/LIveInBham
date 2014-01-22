@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Liveinbham::Application.routes.draw do
-	root :to => "units#index"
+	root :to => "home#index"
 
 	get "administrator/index", :as => "admin"
 	devise_for :users, :controllers => {:registrations => "registrations"}

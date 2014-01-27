@@ -13,6 +13,10 @@ module Api
 				@units = Unit.featured.all
 				respond_with { @units }
 			end
+			def viewer
+				@units = Unit.all
+				respond_with { @units }
+			end
 
 		private
 			def restrict_access

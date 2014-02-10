@@ -46,7 +46,7 @@
 <% if @unit.link? %>
 <p>
   <strong>Link:</strong>
-  <%= @unit.link %>
+  <%= link_to @unit.title, @unit.link %>
 </p>
 <% end %>
 

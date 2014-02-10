@@ -17,6 +17,7 @@ Liveinbham::Application.routes.draw do
 	    	resources :units
 	    	resources :categories
 	    	get "featured", to: 'units#featured'
+	    	get "viewer", to: 'units#viewer'
 	    end
 	end
 	authenticate :user, lambda{ |u| u.has_role? :admin } do

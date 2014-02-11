@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102211423) do
+ActiveRecord::Schema.define(version: 20140211013007) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140102211423) do
     t.datetime "updated_at"
     t.boolean  "image_processing"
     t.string   "image_tmp"
+    t.string   "phoneNum"
   end
 
   add_index "units", ["building_id"], name: "index_units_on_building_id", using: :btree

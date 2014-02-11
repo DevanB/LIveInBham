@@ -25,6 +25,7 @@
           <th>Bedrooms</th>
           <th>Bathrooms</th>
           <th>Price Per Month</th>
+          <th>Contact Phone Number</th>
           <% unless @units.length == 0 %><th></th><% end %>
           <% if user_signed_in? %>
             <% if current_user.has_role? :admin && @units.length == 0 %>
@@ -56,6 +57,7 @@
             <td><%= unit.bedrooms %></td>
             <td><%= unit.bathrooms %></td>
             <td><%= number_to_currency(unit.price) %></td>
+            <td><%= unit.phoneNum %></td>
             <td><%= link_to 'More Information', unit %></td>
             <% if user_signed_in? %>
               <% if current_user.has_role? :admin %>

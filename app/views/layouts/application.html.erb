@@ -5,9 +5,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "Live In BHAM" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Live In Birmingham" %>">
     <%= stylesheet_link_tag "application" %>
-    <%# Foundation 5 won't work with Rails Turbolinks %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag "modernizr.js" %>
     <%= csrf_meta_tags %>
   </head>
   <body>

@@ -1,6 +1,6 @@
 collection @units
 
-attributes :featured, :number, :avail_date, :title, :description, :bedrooms, :bathrooms, :price, :link
+attributes :featured, :number, :avail_date, :title, :description, :bedrooms, :bathrooms, :price, :phoneNum, :link
 
 node :address do |units|
 	units.building.address + " " + units.building.city + " " + units.building.state + ", " + units.building.zip_code.zip_code

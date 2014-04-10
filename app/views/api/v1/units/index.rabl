@@ -18,3 +18,9 @@ node :imageThumbUrl do |units|
 	else "http://www.liveinbirmingham.co" + units.image.url(:thumb)
 	end
 end
+node :latitude do |units|
+	units.building.latitude
+end
+node :longitude do |units|
+	units.building.longitude
+end
